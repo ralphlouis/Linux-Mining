@@ -17,3 +17,7 @@ To configure the fan speed, core clock or memory speed we need to start xorg and
 X :1 &
 The computer console should not give any errors, but it will not return back to the username at the command line. Then type in
 export DISPLAY=:1
+
+Info on NVIDIA Graphic cards:
+https://www.techpowerup.com/gpu-specs/p106-100.c2980
+https://nvidia.custhelp.com/app/answers/detail/a_id/3751/~/useful-nvidia-smi-queries
