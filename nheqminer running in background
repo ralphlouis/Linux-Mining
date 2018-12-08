@@ -1,0 +1,1 @@
+nohup ./nheqminer -l equihash.us.nicehash.com:3357 -u walletID.worker -t14
