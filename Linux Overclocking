@@ -1,5 +1,6 @@
 nvidia-settings -a '[gpu:0]/GPUMemoryTransferRateOffset[3]=1400'
 nvidia-settings -a '[gpu:0]/GPUGraphicsClockOffset[3]=50'
+nvidia-settings -a [gpu:index_of_GPU]/GPUFanControlState=1 -a [fan:0]/GPUTargetFanSpeed=fan_speed_percentage
 
 [gpu:0] means to apply the setting to my primary graphics card, if I had two I would use both [gpu:0] and [gpu:1].
 
@@ -10,3 +11,9 @@ GPUGraphicsClockOffset is how much I want to overclock the core.
 [3] means to apply the overclock to “performance level 3” of my graphics card, this is the level a GTX 760 will utilize for running games. The lower levels are used when just browsing etc.
 
 1400 and 50 are the mhz values for each overclock value.
+
+Note: You need to be root on the main screen, if via SSH:
+To configure the fan speed, core clock or memory speed we need to start xorg and then tell the system that our main display is the SSH console.
+X :1 &
+The computer console should not give any errors, but it will not return back to the username at the command line. Then type in
+export DISPLAY=:1
