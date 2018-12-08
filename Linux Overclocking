@@ -1,0 +1,12 @@
+nvidia-settings -a '[gpu:0]/GPUMemoryTransferRateOffset[3]=1400'
+nvidia-settings -a '[gpu:0]/GPUGraphicsClockOffset[3]=50'
+
+[gpu:0] means to apply the setting to my primary graphics card, if I had two I would use both [gpu:0] and [gpu:1].
+
+GPUMemoryTransferRateOffset is how much I want to overclock the memory.
+
+GPUGraphicsClockOffset is how much I want to overclock the core.
+
+[3] means to apply the overclock to “performance level 3” of my graphics card, this is the level a GTX 760 will utilize for running games. The lower levels are used when just browsing etc.
+
+1400 and 50 are the mhz values for each overclock value.
