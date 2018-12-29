@@ -932,3 +932,15 @@ You might need to reboot your pc / blacklist the nouveau driver (German tutorial
 
 FASM download
 https://flatassembler.net/download.php
+
+How to fix "sudo make -j $(nproc)
+
+This is a great guide you have written, incorporating all the recent discussions.
+
+I would also add that if you have a new cuda version (9.1 in my case), you are going to have to delete #include "device_functions_decls.h" from cuda_djezo/eqcuda.hpp
+
+Also I think the installation guide is misleading in that you don't seem to need boost 1.58 to compile. I went through a lot of trouble building boost 1.66 in a custom directory, which means that cmake needs another argument specifying -DBOOST_ROOT, or you can set export BOOST_ROOT=/path/to/custom/boost/build/ before calling cmake.
+
+Also, I think the build directory should be relocated into the root git directory, like all the other github builds...maybe that's just aesthetic.
+
+The hash-rates were a little disappointing after all the compilation effort. Some work needs to be done on the cuda algorithms.
