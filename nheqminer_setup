@@ -857,3 +857,75 @@ install CUDA using .run files. You may not istall driver. Instead, install the l
 
 then reboot
 
+Install CUDA for Ubuntu
+There is an Linux installation guide. However, it is basically only those steps:
+
+Download CUDA: I used the 15.04 version and "runfile (local)". That is 1.1 GB.
+Check the md5 sum: md5sum cuda_7.5.18_linux.run. Only continue if it is correct.
+Remove any other installation (sudo apt-get purge nvidia-cuda* - if you want to install the drivers too, then sudo apt-get purge nvidia-*.)
+If you want to install the display drivers(*), logout from your GUI. Go to a terminal session (ctrl+alt+F2)
+Stop lightdm: sudo service lightdm stop
+Create a file at /etc/modprobe.d/blacklist-nouveau.conf with the following contents: blacklist nouveau
+options nouveau modeset=0
+Then do: sudo update-initramfs -u
+sudo sh cuda_7.5.18_linux.run --override. Make sure that you say y for the symbolic link.
+Start lightdm again: sudo service lightdm start
+Follow the command-line prompts
+See also: NVIDIA CUDA with Ubuntu 16.04 beta on a laptop (if you just cannot wait)
+
+Notes: Yes, there is the possibility to install it via apt-get install cuda. I strongly suggest not to use it, as it changes the paths and makes the installation of other tools more difficult.
+
+You might also be interested in How can I install CuDNN on Ubuntu 16.04?.
+
+*: Don't install the display drivers with this script. They are old. Download the latest ones from http://www.nvidia.com/Download/index.aspx
+
+Verify CUDA installation
+The following command shows the current CUDA version (last line):
+
+$ nvcc --version
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2016 NVIDIA Corporation
+Built on Sun_Sep__4_22:14:01_CDT_2016
+Cuda compilation tools, release 8.0, V8.0.44
+The following command shows your driver version and how much GPU memory you have:
+
+$ nvidia-smi
+Fri Jan 20 12:19:04 2017       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 367.57                 Driver Version: 367.57                    |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce 940MX       Off  | 0000:02:00.0     Off |                  N/A |
+| N/A   75C    P0    N/A /  N/A |   1981MiB /  2002MiB |     98%      Default |
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID  Type  Process name                               Usage      |
+|=============================================================================|
+|    0      1156    G   /usr/lib/xorg/Xorg                             246MiB |
+|    0      3198    G   ...m,SecurityWarningIconUpdate<SecurityWarni   222MiB |
+|    0      6645    C   python                                        1510MiB |
++-----------------------------------------------------------------------------+
+See also: Verify CuDNN installation
+
+Help! The new driver does not work!
+Don't panic. Even if you can't see anything on your computer, the following steps should get you back to the state before:
+
+Press shift while startup
+Go into a root shell
+Make it writable by mount -o remount,rw / (- is ? and / is - in the american layout)
+sh cuda_7.5.18_linux.run --uninstall
+sudo apt-get install nvidia-361 nvidia-common nvidia-prime nvidia-settings
+Graphic drivers
+Installing the graphic drivers is a bit tricky. This has to be done without graphics support.
+
+Logout from your current X session.
+Ctrl+Alt+F4 (you can switch back with Ctrl+Alt+F7)
+You should remove all other drivers before.
+Search them via dpkg -l | grep -i nvidia
+Remove them via sudo apt-get remove --purge nvidia-WHATEVER
+Stop lightdm via sudo service lightdm stop
+You might need to reboot your pc / blacklist the nouveau driver (German tutorial)
