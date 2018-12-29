@@ -846,5 +846,14 @@ Copyright
 
 This product includes software developed by the Syncro Soft SRL (http://www.sync.ro/).
 
+Another interesting one:
+I have installed CUDA 9.1 on Ubuntu 18.04, and runs very well.
+
+However, I should modify default gcc, g++, and use .run files instead of .deb files.
+
+install gcc-6, g++-6 (CUDA requires gcc-6 !)
+In /usr/bin as root, rm gcc, gcc-ar, gcc-nm, gcc-ranlib g++, then ln -s gcc-6 gcc; ln -s gcc-ar-6 gcc-ar; ln -s gcc-nm-6 gcc-nm; ln -s gcc-ranlib-6 gcc-ranlib; and ln -s g++-6 g++
+install CUDA using .run files. You may not istall driver. Instead, install the latest driver(if required, download NVIDIA-Linux-xxxxxxx.run from Nvidia) would be better.
+
 then reboot
 
