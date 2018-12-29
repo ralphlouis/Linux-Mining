@@ -944,3 +944,6 @@ Also I think the installation guide is misleading in that you don't seem to need
 Also, I think the build directory should be relocated into the root git directory, like all the other github builds...maybe that's just aesthetic.
 
 The hash-rates were a little disappointing after all the compilation effort. Some work needs to be done on the cuda algorithms.
+
+Fix:
+Cmakelist.txt in nheqminer folder, set cuda_tromp to true
