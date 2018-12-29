@@ -929,3 +929,6 @@ Search them via dpkg -l | grep -i nvidia
 Remove them via sudo apt-get remove --purge nvidia-WHATEVER
 Stop lightdm via sudo service lightdm stop
 You might need to reboot your pc / blacklist the nouveau driver (German tutorial)
+
+FASM download
+https://flatassembler.net/download.php
