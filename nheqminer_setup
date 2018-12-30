@@ -946,7 +946,14 @@ Also, I think the build directory should be relocated into the root git director
 The hash-rates were a little disappointing after all the compilation effort. Some work needs to be done on the cuda algorithms.
 
 Fix:
-Cmakelist.txt in nheqminer folder, set cuda_tromp to true
+Cmakelist.txt in nheqminer folder, set cuda_tromp to "ON"
+and then you need to perform these steps again:
+cd nheqminer/cpu_xenoncat/asm_linux/
+sh assemble.sh
+cd ../../../
+mkdir build && cd build
+cmake ../nheqminer
+make -j $(nproc)
 
 ===========
 = Summary =
