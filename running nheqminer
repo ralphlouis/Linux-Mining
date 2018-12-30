@@ -1,3 +1,3 @@
-./nheqminer -l equihash.eu.nicehash.com:3357 -u 32MN1iWDnWmCsuXJ5w5xM45EKAd1Bfk36r.unig1 -t 0 -cd 0 1 2 3 4 5
+./nheqminer -l equihash.hk.nicehash.com:3357 -u 32MN1iWDnWmCsuXJ5w5xM45EKAd1Bfk36r.unig1 -t 0 -cd 0 1 2 3 4 5
 -t option is for cpu threads (if mining with gpu put this to 0)
 -cd is for number of gpus in the example above is when you are utilizing 6 gpus
